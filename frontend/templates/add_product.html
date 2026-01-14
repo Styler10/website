@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Добавить товар{% endblock %}
+
+{% block content %}
+<h1>Добавить товар</h1>
+
+<form method="post"
+      action="/products/add"
+      enctype="multipart/form-data"
+      class="product-form">
+
+    <label>
+        Название:
+        <input type="text" name="name" required>
+    </label>
+
+    <label>
+        Цена:
+        <input type="number" name="price" step="0.01" required>
+    </label>
+
+    <label>
+        Картинка:
+        <input type="file"
+               name="image"
+               accept="image/*"
+               onchange="previewImage(event)">
+    </label>
+
+    <img id="preview"
+         style="display:none; margin-top:10px; border-radius:10px;"
+         width="100">
+
+    <button type="submit">Добавить</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function previewImage(event) {
+    const img = document.getElementById('preview');
+    const file = event.target.files[0];
+
+    if (!file) {
+        img.style.display = 'none';
+        return;
+    }
+
+    img.src = URL.createObjectURL(file);
+    img.style.display = 'block';
+}
+</script>
+{% endblock %}

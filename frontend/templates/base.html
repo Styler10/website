@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Shop{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/">Главная</a>
+        <a href="/products">Товары</a>
+        <a href="/cart">Корзина</a>
+        <a href="/products/add">Добавить товар</a>
+    </div>
+</nav>
+
+<hr>
+
+{% block content %}{% endblock %}
+
+<script src="/static/js/app.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
